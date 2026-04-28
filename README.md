@@ -1,73 +1,184 @@
-# React + TypeScript + Vite
+# Weather Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicação moderna de dashboard meteorológico desenvolvida com React, TypeScript e Vite, fornecendo visualização completa de dados climáticos em tempo real e históricos.
 
-Currently, two official plugins are available:
+## 🌟 O que o projeto resolve
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+O Weather Dashboard oferece uma interface intuitiva para:
 
-## React Compiler
+- **Busca de Cidades**: Pesquisa rápida e intuitiva de localidades worldwide
+- **Dados em Tempo Real**: Temperatura atual, umidade, condições climáticas
+- **Previsão de 7 Dias**: Visualização gráfica de temperatura e precipitação
+- **Dados Históricos**: Análise dos últimos 7 dias de clima
+- **Interface Responsiva**: Design adaptável para desktop e mobile
+- **Experiência Rica**: Animações suaves e feedback visual
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Stack Utilizada
 
-## Expanding the ESLint configuration
+### **Frontend**
+- **React 18** - Biblioteca principal para construção da UI
+- **TypeScript** - Tipagem estática para maior robustez
+- **Vite** - Build tool rápido e moderno
+- **CSS3** - Estilização com variáveis e design responsivo
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### **Visualização de Dados**
+- **Recharts** - Biblioteca para gráficos interativos (LineChart, BarChart)
+- **Custom Components** - Componentes específicos para temperatura e precipitação
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### **APIs Externas**
+- **Open-Meteo API** - Dados meteorológicos gratuitos e precisos
+  - Geocoding API para busca de cidades
+  - Forecast API para previsões
+  - Archive API para dados históricos
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### **Testes e Qualidade**
+- **Vitest** - Framework de testes rápido e moderno
+- **React Testing Library** - Testes focados no comportamento do usuário
+- **MSW (Mock Service Worker)** - Mock de APIs para testes consistentes
+- **ESLint** - Análise estática de código
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### **IA no Processo**
+- **Cascade AI** - Assistente de desenvolvimento para:
+  - Geração de código boilerplate
+  - Implementação de componentes
+  - Criação de testes unitários
+  - Debug e otimização
+  - Boas práticas de desenvolvimento
+
+## 📁 Estrutura de Pastas
+
+```
+weather-dashboard/
+├── public/                 # Assets estáticos
+│   ├── favicon.svg
+│   └── icons.svg
+├── src/
+│   ├── assets/            # Imagens e recursos
+│   │   ├── hero.png
+│   │   ├── react.svg
+│   │   └── vite.svg
+│   ├── components/         # Componentes React
+│   │   ├── __tests__/     # Testes dos componentes
+│   │   │   ├── TemperatureChart.test.tsx
+│   │   │   └── WeatherSearch.test.tsx
+│   │   ├── RainForecastChart.tsx
+│   │   ├── RainHistoryChart.tsx
+│   │   ├── TemperatureChart.tsx
+│   │   ├── TemperatureHistoryChart.tsx
+│   │   └── WeatherSearch.tsx
+│   ├── services/          # Lógica de API
+│   │   ├── __tests__/     # Testes dos serviços
+│   │   │   └── weatherApi.test.ts
+│   │   └── weatherApi.ts
+│   ├── test/             # Configuração de testes
+│   │   └── setup.ts      # MSW setup
+│   ├── types/            # Tipos TypeScript
+│   │   └── weather.ts
+│   ├── utils/            # Funções utilitárias
+│   │   └── __tests__/     # Testes das utilitárias
+│   │       └── dateUtils.test.ts
+│   ├── App.css           # Estilos do componente principal
+│   ├── App.tsx           # Componente principal da aplicação
+│   ├── index.css         # Estilos globais
+│   └── main.tsx         # Ponto de entrada
+├── package.json          # Dependências e scripts
+├── tsconfig.json        # Configuração TypeScript
+├── vite.config.ts       # Configuração Vite
+└── vitest.config.ts     # Configuração Vitest
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🚀 Como Instalar e Executar
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### **Pré-requisitos**
+- Node.js 18+ 
+- npm ou yarn
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### **Instalação**
+```bash
+# Clonar o repositório
+git clone <repository-url>
+cd weather-dashboard
+
+# Instalar dependências
+npm install
 ```
+
+### **Execução em Desenvolvimento**
+```bash
+# Iniciar servidor de desenvolvimento
+npm run dev
+
+# Acessar a aplicação
+# http://localhost:5173
+```
+
+### **Build para Produção**
+```bash
+# Criar build otimizado
+npm run build
+
+# Previsualizar build
+npm run preview
+```
+
+## 🧪 Como Rodar os Testes
+
+### **Executar Todos os Testes**
+```bash
+# Executar uma vez
+npm run test:run
+
+# Modo watch (reexecuta quando arquivos mudam)
+npm run test
+
+# Interface visual dos testes
+npm run test:ui
+
+# Gerar relatório de cobertura
+npm run test:coverage
+```
+
+### **Estrutura dos Testes**
+- **API Services**: Testes de integração com Open-Meteo
+- **Componentes**: Testes de renderização e interações
+- **Utilitárias**: Testes de funções de formatação e processamento
+- **Mock Setup**: MSW para simular respostas de API
+
+### **Resultados Esperados**
+```
+✅ 35 testes passando
+✅ 0 testes falhando
+✅ Cobertura completa de funcionalidades
+```
+
+## 🤖 Como a IA foi Usada no Processo
+
+### **Fases de Desenvolvimento com Cascade AI**
+
+1. **Setup Inicial**
+   - Configuração do projeto React + TypeScript + Vite
+   - Definição da estrutura de pastas
+   - Instalação de dependências
+
+2. **Implementação de Features**
+   - Criação de tipos TypeScript para dados meteorológicos
+   - Implementação de serviços de API com Open-Meteo
+   - Desenvolvimento de componentes React
+   - Integração de gráficos com Recharts
+
+3. **Estilização e UX**
+   - Design responsivo com CSS3
+   - Sistema de cores temático
+   - Animações e transições
+
+4. **Testes Automatizados**
+   - Configuração do ambiente de testes (Vitest + MSW)
+   - Criação de testes unitários para todas as camadas
+   - Mock de APIs para testes consistentes
+   - Validação de comportamentos e edge cases
+
+5. **Otimização e Refinamento**
+   - Correção de bugs e edge cases
+   - Otimização de performance
+   - Melhoria de mensagens de erro
+   - Documentação completa
